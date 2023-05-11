@@ -1,72 +1,54 @@
-import random
+from random import randint
+from time import sleep
 
-# Função para obter a jogada do jogador humano
-def obter_jogada():
-  while True:
-    jogada = input("Digite sua jogada (pedra, papel ou tesoura): ").lower()
-    if jogada in ["pedra", "papel", "tesoura"]:
-      return jogada
-    print("Jogada inválida, tente novamente.")
+escolha = ("Pedra", "Papel", "Tesoura")
+# armazena os dados e regras do jogo
 
-# Função para determinar o vencedor de uma partida
-def determinar_vencedor(jogada1, jogada2):
-  if jogada1 == jogada2:
-    return "Empate"
-  elif jogada1 == "pedra" and jogada2 == "tesoura":
-    return "Jogador 1"
-  elif jogada1 == "tesoura" and jogada2 == "papel":
-    return "Jogador 1"
-  elif jogada1 == "papel" and jogada2 == "pedra":
-    return "Jogador 1"
-  else:
-    return "Jogador 2"
+computador = randint(0, 2)
+#randint e um metodo do python que recebe 2 numeros como parametro e entre eles gera um numero randomico
 
-# Função principal do jogo
-def jogar_jokenpo():
-  print("Bem-vindo ao Jokenpô!")
 
-  # Obter modalidade do jogo
-  while True:
-    modalidade = input("Escolha a modalidade de jogo (1 - Humano x Humano, 2 - Humano x Computador, 3 - Computador x Computador): ")
-    if modalidade in ["1", "2", "3"]:
-      break
-    print("Modalidade inválida, tente novamente.")
-  modalidade = int(modalidade)
+perguntar = int(input('Escolha uma opcao para se jogar: [0] Pedra -- [1] Papel -- [2] Tesoura -- Digite sua escolha: '))
 
-  # Inicializar placar
-  placar = {"Jogador 1": 0, "Jogador 2": 0}
+print("JO\n")
+sleep(2)
+#SLEEP e um metodo do python que recebe um numero como parametro sendo esse numero considerado como segundos a esperar para execucao da proxima linha de codigo
+print("KENPOHHHHHH!!!!!\n")
 
-  # Laço de repetição para múltiplas partidas
-  while True:
-    # Obter jogada dos jogadores
-    if modalidade == 1:
-      jogada1 = obter_jogada()
-      jogada2 = obter_jogada()
-    elif modalidade == 2:
-      jogada1 = obter_jogada()
-      jogada2 = random.choice(["pedra", "papel", "tesoura"])
-      print("Jogador 2 jogou:", jogada2)
+
+
+print("O computador escolheu: {}".format(escolha[computador]))
+print("O jogador escolheu: {}".format(escolha[perguntar]))
+
+
+if computador == 0:
+    if perguntar == 0:
+        print("Empate!")
+    elif perguntar == 1:
+        print("Jogador perdeu")
+    elif perguntar == 2:
+        print("Computador venceu")
     else:
-      jogada1 = random.choice(["pedra", "papel", "tesoura"])
-      jogada2 = random.choice(["pedra", "papel", "tesoura"])
-      print("Jogador 1 jogou:", jogada1)
-      print("Jogador 2 jogou:", jogada2)
+        print("Operacao invalida")
 
-    # Determinar vencedor e atualizar placar
-    vencedor = determinar_vencedor(jogada1, jogada2)
-    print("Vencedor da partida:", vencedor)
-    placar[vencedor] += 1
-    print("Placar geral:", placar)
+elif computador == 1:
+    if perguntar == 0:
+        print("Computador perdeu")
+    elif perguntar == 1:
+        print("Empate!")
+    elif perguntar == 2:
+        print("Jogador venceu")
+    else:
+        print("Operacao invalida")
+elif computador == 2:
+    if perguntar == 0:
+        print("Jogador venceu")
+    elif perguntar == 1:
+        print("Computador venceu")
+    elif perguntar == 2:
+        print("Empate!")
+    else:
+        print("Operacao invalida")
+else:
+    print("Operacao invalida")
 
-    # Perguntar se deseja continuar
-    while True:
-      resposta = input("Deseja continuar jogando? (s/n): ").lower()
-      if resposta in ["s", "n"]:
-        break
-      print("Resposta inválida, tente novamente.")
-    if resposta == "n":
-      break
-
-  # Exibir placar final e mensagem de agradecimento
-  print("Placar final:", placar)
-  print("Obrig
