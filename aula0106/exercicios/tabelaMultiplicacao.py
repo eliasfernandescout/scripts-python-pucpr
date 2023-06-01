@@ -1,10 +1,7 @@
+#CONSTRUA A TABELA DE MULTIPLICACAO DE 1 A 10 (TABUADA COMPLETA)
 
-num = int(input("Digite um número inteiro: "))
-
-i = 1
-
-while i <= 10:
-    print(num, "x", i, "=", num*i)
-    i += 1
-
-for i in
+for firstIndex in range(1, 11):
+    print(f"Tabuada do {firstIndex}:")
+    for secondIndex in range(1, 11):
+        print(f"{firstIndex} x {secondIndex} = {firstIndex * secondIndex}")
+print()
