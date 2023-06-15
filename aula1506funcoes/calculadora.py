@@ -41,5 +41,5 @@ if tipoOperacao == "/":
         print("...calculando")
         time.sleep(0.5)
         return num1 / num2
-
     print("DIVISAO = ", dividir(num1, num2))
+
